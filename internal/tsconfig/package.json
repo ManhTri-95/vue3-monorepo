@@ -1,0 +1,19 @@
+{
+  "name": "@manhtri/tsconfig",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ManhTri-95/vue3-monorepo.git",
+    "directory": "internal/tsconfig"
+  },
+  "files": [
+    "base.json",
+    "node.json"
+  ],
+  "dependencies": {
+    "vite": "catalog:"
+  }
+}

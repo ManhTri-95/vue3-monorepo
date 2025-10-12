@@ -1,0 +1,13 @@
+packages:
+  - apps/*
+  - packages/*
+  - internal/*
+  - scripts/*
+catalog:
+  "@clack/prompts": ^0.11.0
+  "@vitejs/plugin-vue": 6.0.1
+  cac: ^6.7.14
+  turbo: 2.5.4
+  unbuild: 3.6.1
+  vite: 7.1.2
+  vue: 3.5.17

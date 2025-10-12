@@ -1,0 +1,27 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+dist.zip
+dist.tar
+dist.war
+*-dist.zip
+*-dist.tar
+*-dist.war
+.cache
+.turbo
+
+# local env files
+.env.local
+.env.*.local
+
+vite.config.mts.*
+vite.config.mjs.*
+vite.config.js.*
+vite.config.ts.*
+
+# Editor directories and files
+.idea
+# .vscode
+.history
+.cursor

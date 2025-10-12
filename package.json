@@ -1,0 +1,21 @@
+{
+  "name": "apps",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "turbo-run dev",
+    "dev:engilink_manager": "pnpm -F @engilink/manager run dev",
+    "dev:engilink_company": "pnpm -F @engilink/company run dev",
+    "catalog": "pnpx codemod pnpm/catalog"
+  },
+  "devDependencies": {
+    "@manhtri/tsconfig": "workspace:*",
+    "@vitejs/plugin-vue": "catalog:",
+    "turbo": "catalog:",
+    "unbuild": "catalog:",
+    "vite": "catalog:",
+    "vue": "catalog:"
+  },
+  "packageManager": "pnpm@10.14.0"
+}
