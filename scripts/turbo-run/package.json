@@ -3,15 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "stub": "pnpm unbuild --stub"
-  },
-  "bin": {
-    "turbo-run": "./bin/turbo-run.mjs"
+    "stub": "pnpm unbuild --stub",
+    "build": "unbuild"
   },
   "files": [
     "dist"
   ],
+  "bin": {
+  "turbo-run": "./bin/turbo-run.mjs"
+},
   "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
   "keywords": [],
   "author": "",
   "license": "ISC",

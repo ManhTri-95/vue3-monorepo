@@ -9,4 +9,7 @@ export async function run (options: RunOptions) {
     console.error('Please enter the command to run');
     process.exit(1);
   }
+
+  console.log(command);
+  //execaCommand(`pnpm --filter`)
 }

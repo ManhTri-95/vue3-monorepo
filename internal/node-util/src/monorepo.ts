@@ -15,4 +15,13 @@ function findMonorepoRoot (cwd: string = process.cwd()) {
   return dirname(lockFile || '');
 }
 
-export { findMonorepoRoot }
+/**
+ * Get all packages from the main warehouse
+ */
+async function getPackages() {
+  const root = findMonorepoRoot();
+  
+  return await getPackagesFunc(root)
+}
+
+export { findMonorepoRoot, getPackages }
