@@ -3,6 +3,14 @@
     {
       "name": "@manhtri/tsconfig",
       "path": "internal/tsconfig"
+    },
+    {
+      "name": "@manhtri/node-util",
+       "path": "internal/node-util"
+    },
+    {
+      "name": "@manhtri/turbo-run",
+      "path": "scripts/turbo-run"
     }
   ]
 }

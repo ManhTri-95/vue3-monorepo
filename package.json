@@ -11,6 +11,8 @@
   },
   "devDependencies": {
     "@manhtri/tsconfig": "workspace:*",
+    "@manhtri/node-util": "workspace:*",
+    "@types/node": "catalog:",
     "@vitejs/plugin-vue": "catalog:",
     "turbo": "catalog:",
     "unbuild": "catalog:",

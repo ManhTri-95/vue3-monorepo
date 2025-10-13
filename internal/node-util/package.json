@@ -1,0 +1,32 @@
+{
+  "name": "@manhtri/node-util",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "scripts": {
+    "stub": "pnpm unbuild --stub",
+    "build": "unbuild"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "dependencies": {
+    "@manypkg/get-packages": "catalog:",
+    "execa": "catalog:",
+    "find-up": "catalog:",
+    "pkg-types": "catalog:",
+    "rimraf": "catalog:"
+  }
+}

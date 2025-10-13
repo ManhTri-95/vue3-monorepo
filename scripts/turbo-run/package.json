@@ -2,10 +2,16 @@
   "name": "@manhtri/turbo-run",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "stub": "pnpm unbuild --stub"
   },
+  "bin": {
+    "turbo-run": "./bin/turbo-run.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.mjs",
   "keywords": [],
   "author": "",
   "license": "ISC",
