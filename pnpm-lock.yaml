@@ -50,9 +50,6 @@ importers:
 
   .:
     devDependencies:
-      '@manhtri/node-util':
-        specifier: workspace:*
-        version: link:internal/node-util
       '@manhtri/tsconfig':
         specifier: workspace:*
         version: link:internal/tsconfig
@@ -111,6 +108,9 @@ importers:
       '@clack/prompts':
         specifier: 'catalog:'
         version: 0.11.0
+      '@manhtri/node-util':
+        specifier: workspace:*
+        version: link:../../internal/node-util
       cac:
         specifier: 'catalog:'
         version: 6.7.14

@@ -6,8 +6,7 @@
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "scripts": {
-    "stub": "pnpm unbuild --stub",
-    "build": "unbuild"
+    "stub": "pnpm unbuild --stub"
   },
   "files": [
     "dist"

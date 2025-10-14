@@ -7,13 +7,13 @@
     "dev": "turbo-run dev",
     "dev:engilink_manager": "pnpm -F @engilink/manager run dev",
     "dev:engilink_company": "pnpm -F @engilink/company run dev",
-    "catalog": "pnpx codemod pnpm/catalog"
+    "catalog": "pnpx codemod pnpm/catalog",
+    "postinstall": "pnpm -r run stub --if-present"
   },
   "devDependencies": {
-    "@manhtri/tsconfig": "workspace:*",
-    "@manhtri/node-util": "workspace:*",
-    "@manhtri/turbo-run": "workspace:*",
     "@types/node": "catalog:",
+    "@manhtri/tsconfig": "workspace:*",
+    "@manhtri/turbo-run": "workspace:*",
     "@vitejs/plugin-vue": "catalog:",
     "turbo": "catalog:",
     "unbuild": "catalog:",

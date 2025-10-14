@@ -1,5 +1,5 @@
 {
-  "name": "@manhtri/turbo-run",
+  "name": "@manhtri/vite-config",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -8,18 +8,10 @@
   "files": [
     "dist"
   ],
-  "bin": {
-    "turbo-run": "./bin/turbo-run.mjs"
-  },
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@manhtri/node-util": "workspace:*",
-    "@clack/prompts": "catalog:",
-    "cac": "catalog:"
-  }
+  "license": "ISC"
 }
