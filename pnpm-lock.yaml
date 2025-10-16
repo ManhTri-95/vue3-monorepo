@@ -103,6 +103,8 @@ importers:
         specifier: 'catalog:'
         version: 7.1.2(@types/node@22.16.0)(jiti@2.6.1)
 
+  internal/vite-config: {}
+
   scripts/turbo-run:
     dependencies:
       '@clack/prompts':
