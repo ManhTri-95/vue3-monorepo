@@ -14,6 +14,7 @@
     "@types/node": "catalog:",
     "@manhtri/tsconfig": "workspace:*",
     "@manhtri/turbo-run": "workspace:*",
+    "@manhtri/vite-config": "workspace:*",
     "@vitejs/plugin-vue": "catalog:",
     "turbo": "catalog:",
     "unbuild": "catalog:",

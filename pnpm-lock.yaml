@@ -56,6 +56,9 @@ importers:
       '@manhtri/turbo-run':
         specifier: workspace:*
         version: link:scripts/turbo-run
+      '@manhtri/vite-config':
+        specifier: workspace:*
+        version: link:internal/vite-config
       '@types/node':
         specifier: 'catalog:'
         version: 22.16.0
@@ -103,7 +106,11 @@ importers:
         specifier: 'catalog:'
         version: 7.1.2(@types/node@22.16.0)(jiti@2.6.1)
 
-  internal/vite-config: {}
+  internal/vite-config:
+    devDependencies:
+      vite:
+        specifier: 'catalog:'
+        version: 7.1.2(@types/node@22.16.0)(jiti@2.6.1)
 
   scripts/turbo-run:
     dependencies:

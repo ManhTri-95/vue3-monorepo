@@ -3,7 +3,6 @@ import { run } from './run';
 
 try {
   const turboRun = cac('turbo-run');
-  console.log(turboRun);
 
   turboRun
     .command('[script]')

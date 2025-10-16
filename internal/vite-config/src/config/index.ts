@@ -1,6 +1,7 @@
 import { join } from 'node:path';
 import type { DefineConfig } from '../typing';
 import { existsSync } from 'node:fs';
+import { defineApplicationConfig } from './application';
 
 function defineConfig (
   userConfigPromise?: DefineConfig, 
@@ -15,7 +16,11 @@ function defineConfig (
 
   switch (projectType) {
     case 'application': {
-      return 
+      return defineApplicationConfig(userConfigPromise);
     }
   }
 }
+
+export { defineConfig }
+
+

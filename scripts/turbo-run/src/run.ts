@@ -34,7 +34,6 @@ export async function run (options: RunOptions) {
     }
   } else {
     selectPkg = selectPkgs[0]?.packageJson.name ?? '';
-    console.log(selectPkg)
   }
 
   if (!selectPkg) {
