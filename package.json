@@ -11,14 +11,15 @@
     "postinstall": "pnpm -r run stub --if-present"
   },
   "devDependencies": {
-    "@types/node": "catalog:",
     "@manhtri/tsconfig": "workspace:*",
     "@manhtri/turbo-run": "workspace:*",
     "@manhtri/vite-config": "workspace:*",
+    "@types/node": "catalog:",
     "@vitejs/plugin-vue": "catalog:",
     "turbo": "catalog:",
     "unbuild": "catalog:",
     "vite": "catalog:",
+    "vitest": "catalog:",
     "vue": "catalog:"
   },
   "packageManager": "pnpm@10.14.0"
