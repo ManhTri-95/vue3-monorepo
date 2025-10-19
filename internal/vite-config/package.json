@@ -15,6 +15,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "vite": "catalog:"
+    "@manhtri/node-utils": "workspace:*",
+    "@types/archiver": "catalog:",
+    "@vitejs/plugin-vue-jsx": "catalog:",
+    "sass": "catalog:",
+    "vite": "catalog:",
+    "vite-plugin-html": "catalog:"
+  },
+  "dependencies": {
+    "archiver": "catalog:",
+    "vite-plugin-vue-devtools": "catalog:"
   }
 }

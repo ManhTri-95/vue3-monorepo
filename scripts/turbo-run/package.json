@@ -18,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@manhtri/node-util": "workspace:*",
+    "@manhtri/node-utils": "workspace:*",
     "@clack/prompts": "catalog:",
     "cac": "catalog:"
   }

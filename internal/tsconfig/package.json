@@ -11,7 +11,8 @@
   },
   "files": [
     "base.json",
-    "node.json"
+    "node.json",
+    "web.json"
   ],
   "dependencies": {
     "vite": "catalog:"

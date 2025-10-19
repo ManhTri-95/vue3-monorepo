@@ -1,6 +1,10 @@
 import type { PluginOption } from 'vite';
-import type { CommonPluginOptions, ConditionPlugin  } from '../typing';
-import viteVue from '@vitejs/plugin-vue';
+import type { CommonPluginOptions, ConditionPlugin, ApplicationPluginOptions  } from '../typing';
+import vue from '@vitejs/plugin-vue';
+
+import { viteArchiverPlugin } from './archiver';
+import viteVueDevTools from 'vite-plugin-vue-devtools';
+import { createHtmlPlugin as viteHtmlPlugin } from 'vite-plugin-html';
 
 /**
  * @param conditionPlugins
@@ -19,18 +23,26 @@ async function loadConditionPlugins (conditionPlugins: ConditionPlugin[]) {
 /**
  * general vite plugins based on conditions
  */
-async function loadCommonPlugins(options: CommonPluginOptions): Promise<ConditionPlugin[]> {
-  const { devtools, isBuild } = options;
+async function loadCommonPlugins(
+  options: CommonPluginOptions
+): Promise<ConditionPlugin[]> {
+  const { 
+    devtools, 
+    isBuild } = options;
   return [
     {
       condition: true,
       plugins: () => [
-        viteVue({
+        vue({
           script: {
-            defineModel: true,
+            defineModel: true
           }
-        })
+        }),
       ]
+    },
+    {
+      condition: !isBuild && devtools,
+      plugins: () => [viteVueDevTools()]
     }
   ]
 }
@@ -42,10 +54,39 @@ async function loadLibraryPlugins(options: CommonPluginOptions): Promise<PluginO
   const commonPlugins = await loadCommonPlugins(options);
 
   return await loadConditionPlugins([
-    ...commonPlugins
+    ...commonPlugins,
   ]);
 }
 
-export {
-  loadLibraryPlugins
+async function loadApplicationPlugins(options: ApplicationPluginOptions): Promise<PluginOption[]> {
+  const isBuild = options.isBuild;
+  const env = options.env;
+
+  const { 
+    archiver,
+    archiverPluginOptions,
+    html,
+    ...commonOptions
+  } = options;
+
+  const commonPlugins = await loadCommonPlugins(commonOptions);
+
+  return await loadConditionPlugins([
+    ...commonPlugins,
+    {
+      condition: archiver,
+      plugins: async () => {
+        return [await viteArchiverPlugin(archiverPluginOptions)];
+      }
+    },
+    {
+      condition: !!html,
+      plugins: () => [viteHtmlPlugin({ minify: true })],
+    },
+  ]);
+}
+
+ export {
+  loadLibraryPlugins,
+  loadApplicationPlugins
 }

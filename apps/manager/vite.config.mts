@@ -1,6 +1,16 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from '@manhtri/vite-config';
+import ElementPlus from 'unplugin-element-plus/vite';
 
-export default defineConfig({
-  plugins: [vue()],
-})
+export default defineConfig(async () =>  {
+  return {
+    application: {},
+    vite: {
+      plugins: [
+        ElementPlus({
+          format: 'esm',
+           useSource: true, 
+        })
+      ]
+    }
+  }
+});

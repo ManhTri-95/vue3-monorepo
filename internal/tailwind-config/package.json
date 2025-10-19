@@ -1,0 +1,16 @@
+{
+  "name": "@manhtri/tailwind-config",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "stub": "pnpm unbuild --stub"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tailwindcss": "catalog:",
+    "@manypkg/get-packages": "catalog:"
+  }
+}

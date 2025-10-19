@@ -1,4 +1,4 @@
-import { execaCommand, getPackages } from "@manhtri/node-util";
+import { execaCommand, getPackages } from "@manhtri/node-utils";
 import { select, cancel, isCancel } from '@clack/prompts';
 
 interface RunOptions {

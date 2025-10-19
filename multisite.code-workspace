@@ -5,7 +5,7 @@
       "path": "internal/tsconfig"
     },
     {
-      "name": "@manhtri/node-util",
+      "name": "@manhtri/node-utils",
        "path": "internal/node-util"
     },
     {

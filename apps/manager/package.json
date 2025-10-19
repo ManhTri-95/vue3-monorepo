@@ -4,10 +4,18 @@
   "description": "",
   "scripts": {
     "dev": "pnpm vite --mode development",
-    "build": "vite build"
+    "preview": "vite preview",
+    "build": "pnpm vite build --mode production",
+    "typecheck": "vue-tsc --noEmit --skipLibCheck"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.14.0"
+  "packageManager": "pnpm@10.14.0",
+  "dependencies": {
+    "element-plus": "catalog:"
+  },
+  "devDependencies": {
+    "unplugin-element-plus": "catalog:"
+  }
 }

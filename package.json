@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "build": "cross-env NODE_OPTIONS=--max-old-space-size=8192 turbo build",
     "dev": "turbo-run dev",
     "dev:engilink_manager": "pnpm -F @engilink/manager run dev",
     "dev:engilink_company": "pnpm -F @engilink/company run dev",
@@ -14,13 +15,19 @@
     "@manhtri/tsconfig": "workspace:*",
     "@manhtri/turbo-run": "workspace:*",
     "@manhtri/vite-config": "workspace:*",
+    "@manhtri/tailwind-config": "workspace:*",
     "@types/node": "catalog:",
     "@vitejs/plugin-vue": "catalog:",
+    "@vitejs/plugin-vue-jsx": "catalog:",
+    "cross-env": "catalog:",
+    "dotenv": "catalog:",
     "turbo": "catalog:",
+    "typescript": "catalog:",
     "unbuild": "catalog:",
     "vite": "catalog:",
     "vitest": "catalog:",
-    "vue": "catalog:"
+    "vue": "catalog:",
+    "vue-tsc": "catalog:"
   },
   "packageManager": "pnpm@10.14.0"
 }

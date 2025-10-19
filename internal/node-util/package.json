@@ -1,5 +1,5 @@
 {
-  "name": "@manhtri/node-util",
+  "name": "@manhtri/node-utils",
   "version": "1.0.0",
   "description": "",
   "type": "module",
@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@manypkg/get-packages": "catalog:",
+    "chalk": "catalog:",
     "execa": "catalog:",
     "find-up": "catalog:",
     "pkg-types": "catalog:",

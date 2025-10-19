@@ -4,7 +4,9 @@
   "description": "",
   "scripts": {
     "dev": "pnpm vite --mode development",
-    "build": "vite build"
+    "preview": "vite preview",
+    "build": "pnpm vite build --mode production",
+    "typecheck": "vue-tsc --noEmit --skipLibCheck"
   },
   "keywords": [],
   "author": "",

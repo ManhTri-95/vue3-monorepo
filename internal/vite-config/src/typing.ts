@@ -17,6 +17,8 @@ interface ConditionPlugin {
   plugins: () => PluginOption[] | PromiseLike<PluginOption[]>;
 }
 
+
+
 /**
  * Common plugin configuration options
  * @description Basic configuration shared by all plugins
@@ -41,7 +43,50 @@ interface CommonPluginOptions {
    * Environment variables
    * @description Custom environment variables
    */
-  env?: Record<string, any>;
+  env?: Record<string, any>;  /**
+   /** Whether to enable HTML plug-in
+   * @default true
+   */
+  html?: boolean;
+
+}
+
+
+
+/**
+ * Application plugin configuration options
+ * @description Used to configure plugin options when building an application
+ */
+interface ApplicationPluginOptions extends CommonPluginOptions {
+  /**
+  * Enable or disable compressed archives
+  * @default false
+  * @description If enabled, a zip file will be generated in the archive directory
+  */
+  archiver?: boolean,
+  /**
+  * Compression archive plugin configuration
+  * @description Configure compression archive behavior
+  */
+  archiverPluginOptions?: ArchiverPluginOptions;
+}
+
+
+/**
+* Archive plugin configuration options
+* @description Used to configure compressed archives of build products
+*/
+interface ArchiverPluginOptions { 
+  /**
+   * Output file name
+   * @default 'dist'
+   */
+ name?: string;
+  /**
+  * Output directory
+  * @default '.'
+  */
+ outputDir?: string;
 }
 
 /**
@@ -63,6 +108,24 @@ type DefineLibraryOptions = (config?: ConfigEnv) => Promise<{
 }>
 
 /**
+* Print plugin configuration options
+* @description Used to configure console printing information
+*/
+interface PrintPluginOptions {
+  /** Print data map
+  * @description Data in the form of key-value pairs will be printed to the console
+  * @example
+  * ```typescript
+  * {
+  * 'App Version': '1.0.0',
+  * 'Build Time': '2024-01-01'
+  * }
+  * ```
+  */
+  infoMap?: Record<string, string | undefined>;
+}
+
+/**
 * Configuration Definition Type
 * @description Configuration definition for application or library
 */
@@ -71,6 +134,9 @@ type DefineConfig = DefineApplicationOptions | DefineLibraryOptions
 export type {
   DefineConfig,
   DefineApplicationOptions,
+  ApplicationPluginOptions,
   CommonPluginOptions,
-  ConditionPlugin
+  ConditionPlugin,
+  ArchiverPluginOptions,
+  PrintPluginOptions
 }
