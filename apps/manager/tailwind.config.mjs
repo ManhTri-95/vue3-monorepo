@@ -1,0 +1,1 @@
+export { default } from '@manhtri/tailwind-config';

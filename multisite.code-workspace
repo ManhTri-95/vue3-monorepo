@@ -6,7 +6,7 @@
     },
     {
       "name": "@manhtri/node-utils",
-       "path": "internal/node-util"
+       "path": "internal/node-utils"
     },
     {
       "name": "@manhtri/turbo-run",

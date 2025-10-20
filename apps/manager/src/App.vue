@@ -2,7 +2,7 @@
   <div>
     <el-button type="success">Click me</el-button>
     <el-input v-model="name" placeholder="Your name" />
-    <div class="text-color">
+    <div class="text-color bottom-2 px-4">
       sdfdsfsf
     </div>
   </div>
