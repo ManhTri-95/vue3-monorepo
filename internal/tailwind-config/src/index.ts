@@ -18,5 +18,7 @@ export default {
       path.join(item, 'src/**/*.{vue,js,ts,jsx,tsx,svelte,astro,html}'),
     )
   ],
-   darkMode: 'selector',
+  extend: {},
+  darkMode: 'selector',
+  safelist: ['dark'],
 } as Config;
