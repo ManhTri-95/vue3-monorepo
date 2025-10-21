@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "../../internal/tsconfig/web.json",
+  "extends": "@manhtri/tsconfig/web.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

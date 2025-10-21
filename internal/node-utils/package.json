@@ -29,5 +29,8 @@
     "find-up": "catalog:",
     "pkg-types": "catalog:",
     "rimraf": "catalog:"
+  },
+  "devDependencies": {
+    "@manhtri/tsconfig": "workspace:*"
   }
 }

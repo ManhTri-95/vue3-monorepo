@@ -28,7 +28,7 @@
       "require": "./dist/postcss.config.cjs",
       "default": "./dist/postcss.config.mjs"
     },
-     "./*": "./*"
+    "./*": "./*"
   },
   "peerDependencies": {
     "tailwindcss": "^3.4.3"
@@ -37,7 +37,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "tailwindcss": "catalog:",
-    "@manypkg/get-packages": "catalog:"
+    "@manypkg/get-packages": "catalog:",
+    "autoprefixer": "10.4.21",
+    "postcss-antd-fixes": "^0.2.0",
+    "postcss-preset-env": "10.2.4",
+    "tailwindcss": "catalog:"
   }
 }

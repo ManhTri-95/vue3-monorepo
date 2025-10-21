@@ -1,4 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "../../../node-utils/web.json",
+  "extends": "@manhtri/tsconfig/web.json",
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

@@ -21,5 +21,8 @@
     "@manhtri/node-utils": "workspace:*",
     "@clack/prompts": "catalog:",
     "cac": "catalog:"
+  },
+  "devDependencies": {
+    "@manhtri/tsconfig": "workspace:*"
   }
 }
