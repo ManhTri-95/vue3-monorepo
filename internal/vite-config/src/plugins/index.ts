@@ -82,7 +82,7 @@ async function loadApplicationPlugins(options: ApplicationPluginOptions): Promis
     {
       condition: !!html,
       plugins: () => [viteHtmlPlugin({ minify: true })],
-    },
+    }
   ]);
 }
 

@@ -9,13 +9,14 @@
     "dev:engilink_manager": "pnpm -F @engilink/manager run dev",
     "dev:engilink_company": "pnpm -F @engilink/company run dev",
     "catalog": "pnpx codemod pnpm/catalog",
-    "postinstall": "pnpm -r run stub --if-present"
+    "postinstall": "pnpm -r run stub --if-present",
+    "clean": "node ./scripts/clean.mjs"
   },
   "devDependencies": {
+    "@manhtri/tailwind-config": "workspace:*",
     "@manhtri/tsconfig": "workspace:*",
     "@manhtri/turbo-run": "workspace:*",
     "@manhtri/vite-config": "workspace:*",
-    "@manhtri/tailwind-config": "workspace:*",
     "@types/node": "catalog:",
     "@vitejs/plugin-vue": "catalog:",
     "@vitejs/plugin-vue-jsx": "catalog:",
@@ -24,6 +25,7 @@
     "turbo": "catalog:",
     "typescript": "catalog:",
     "unbuild": "catalog:",
+    "unplugin-element-plus": "^0.10.0",
     "vite": "catalog:",
     "vitest": "catalog:",
     "vue": "catalog:",
