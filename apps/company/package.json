@@ -10,5 +10,11 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "packageManager": "pnpm@10.14.0",
+  "dependencies": {
+    "@manhtri/styles": "workspace:*",
+    "element-plus": "catalog:",
+    "vue-router": "^4.5.1"
+  }
 }

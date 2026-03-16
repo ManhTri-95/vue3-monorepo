@@ -1,0 +1,52 @@
+# Project Architectural Rules & Coding Standards
+
+## 1. Project Context & Stack
+- Architecture: Monorepo (pnpm workspaces + Turborepo).
+- Core Stack: Vue 3, TypeScript, Vite, Element Plus, TailwindCSS.
+- Philosophy: Scalability, Single Source of Truth (SSOT), Strict Feature Isolation.
+
+## 2. Monorepo Structural Integrity
+- Layout: `/apps/` (Apps), `/packages/` (Shared), `/internal/` (Configs), `/scripts/` (CLI).
+- Dependency Flow: 
+  - `Apps` -> `Packages`. 
+  - `Packages` MUST NOT import from `apps/`.
+  - Always reuse shared code from `/packages/`. Never duplicate logic locally.
+
+## 3. Feature-Based Architecture (`src/views/<feature>/`)
+- **Prohibited:** NEVER use `modules/`, `features/`, or `containers/`.
+- **Mandatory Structure:**
+  - `components/`: UI partials (kebab-case).
+  - `composables/`: Business logic.
+  - `schemas/`: Zod schemas & interfaces (`feature.schema.ts`).
+  - Entry points: `index.vue` (List), `detail.vue` (Detail), `create.vue` (Form).
+
+## 4. Composable Organization Strategy
+- **Shared (`composables/`):** Logic used across pages (API, Schema, Formatters).
+- **Page-specific:** If logic > 50 lines (filters, complex UI state), extract to a specific file (e.g., `use<Feature>List.ts`).
+- **Hierarchy:** Use `index.ts` to export all sub-composables.
+- **Refactoring:** If any composable > 150 lines, split by responsibility (e.g., Form vs API/Submit).
+
+## 5. Frontend Implementation Standards
+- **Component Design:** Mandatory `<script setup lang="ts">`. Components are for UI rendering only.
+- **Logic Separation:** All business logic, state management, and orchestration MUST move to `composables/`.
+- **Data Flow:** View → Components → Composables → API → Request Client.
+- **Imports:** Always use `#/<path>` alias (e.g., `#/api/request`). NO deep relative imports (e.g., `../../`).
+- **Access Control:** Always use `@manhtri/access` (v-access, <AccessControl>).
+
+## 6. Build & Quality Assurance
+- **Turbo Pipeline:** Rely on `dependsOn: ["^build"]`.
+- **Validation:** Run `pnpm check:circular` before committing.
+- **Strict Linting:** Follow ESLint/Stylelint/Vitest configs.
+
+## 7. AI Interaction Directives (Claude 3.5 Sonnet)
+- **Architectural Enforcement:** - If a request violates structural rules (folder/dependency), STOP and REJECT.
+  - If logic in `.vue` > 20 lines, force extraction to `composables/`.
+- **Proactive Structuring:** When creating new features, auto-generate the full mandatory structure (components, composables, schemas, and 3 entry files).
+- **Context Awareness:** - Before writing code, always consult `docs/architecture.md`, `docs/frontend-guide.md`, and `AGENTS.md`.
+  - Use these as the primary "Source of Truth" for system design.
+
+## 8. Select Options Strategy
+- **Static Options:** Define in `src/constants/` as exported arrays.
+- **Dynamic/API Options:** Encapsulate in a composable (e.g., `use<Feature>Options.ts`) to handle fetching and data normalization.
+- **Component Wrapper:** For frequently used select lists, create a dedicated component (e.g., `<FeatureSelect />`) in `components/` to encapsulate the UI and logic.
+- **Consistency:** Never hardcode options in `.vue` files.
