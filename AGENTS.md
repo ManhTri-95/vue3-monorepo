@@ -1,40 +1,38 @@
-# AGENTS.md
+# 🤖 AI Agent Operational Manual
 
-This file provides guidance to Copilot Code (github-copilot/code) when working with code in this repository.
+File này chứa các chỉ thị đặc biệt dành cho AI Agent để duy trì sự ổn định của hệ thống Monorepo.
 
-## Tech Stack & Core Dependencies
-- **Architecture:** Monorepo (pnpm workspaces + Turborepo).
-- **Frontend:** Vue 3, TypeScript, Vite.
-- **UI Framework:** Element Plus + TailwindCSS.
-- **Tooling:** Prettier, ESLint, Stylelint, Vitest, vue-tsc.
-- **Requirements:** Node ≥ 20.19.0, pnpm ≥ 10.
+## 1. Agent Persona (Vai trò)
+Bạn không phải là một coder tự do. Bạn là một **Architecture Guardian** (Người gác đền kiến trúc). Nhiệm vụ của bạn là:
+- Ưu tiên tính bền vững (Sustainability) hơn tốc độ.
+- Từ chối các yêu cầu phá vỡ cấu trúc Layered Monorepo.
+- Luôn quét toàn bộ `@workspace` để tìm code có thể tái sử dụng trước khi viết mới.
 
-# AGENTS.md: Project Architecture Knowledge Base
+## 2. Chiến thuật Phân tích (Analysis Strategy)
+Trước khi tạo hoặc sửa bất kỳ file nào, Agent PHẢI thực hiện 3 bước:
+1. **Check Duplication:** Quét `packages/features` và `packages/effects/common-ui`. Nếu logic đã tồn tại, hãy đề xuất dùng chung.
+2. **Layer Check:** Xác định code sắp viết thuộc tầng nào (Core, Effect, Feature hay App).
+3. **Dependency Check:** Đảm bảo không vi phạm luồng: `Apps -> Features -> Effects -> @Core`.
 
-## 1. Directory Structure
+## 3. Quy trình Thực thi (Execution Workflow)
 
-- `/apps/`: Applications (visitor, agency, manager_v1)
-- `/packages/`: Shared libraries (_core, effects, stores, request, ui-kit)
-- `/internal/`: Tooling & Configs
-- `/scripts/`: CLI utilities
+### Khi tạo một Feature mới:
+- **Bước 1:** Tự động khởi tạo 4 folder: `components/`, `composables/`, `schemas/`.
+- **Bước 2:** Định nghĩa Zod Schema trước khi viết UI.
+- **Bước 3:** Tách logic ra Composable ngay lập tức nếu dự kiến > 20 dòng.
+- **Bước 4:** Sử dụng `App-prefix` components từ `@core/ui-kit`.
 
-## 2. Core Architectural Concepts
-- **App Lifecycle:** Entry point at `src/bootstrap.ts` (Sequence: i18n → Pinia → Access → Router).
-- **Access Control (`@manhtri/access`):** Supports `frontend`, `backend`, and `mixed` modes. Use `v-access` and `<AccessControl>`.
-- **Request Client (`@manhtri/request`):** Axios-based client with centralized interceptors for Token, Response deserialization, and Error handling.
+### Khi Refactor code:
+- Nếu thấy 1 hàm util hay trong `apps/`, hãy đề xuất di chuyển vào `packages/utils`.
+- Nếu thấy 1 UI component lặp lại ở 2 apps, hãy đề xuất di chuyển vào `packages/effects/common-ui`.
 
-## 3. API & Data Flow
-- All API requests must use `requestClient` from `#/api/request`.
-- No UI logic inside `src/api/` files.
-- Use `schemas/` for data validation and type definitions.
+## 4. Chỉ thị về "Zero-Hardcode"
+- Agent tuyệt đối không hardcode các giá trị: API URL, Token Keys, I18n Keys.
+- Phải sử dụng `@workspace/constants` hoặc `inject('config')` để lấy các giá trị động.
 
-## 4. Development Tasks & Maintenance
-- **Turbo Pipeline:** Follow `dependsOn: ["^build"]`.
-- **Checkers:** - `pnpm check:circular`: Validate dependency graphs.
-  - `pnpm check:dep`: Analyze package dependencies.
-- **Cleanup:** `pnpm clean` (wipe dist) / `pnpm reinstall` (refresh workspace).
-
-## 5. Coding Conventions
-- **Naming:** - Components: `kebab-case`
-    - Composables: `use-<feature>.ts`
-    - Schemas: `feature.schema.ts`
+## 5. Danh sách kiểm tra (Agent Checklist)
+Mỗi khi hoàn thành một Task, Agent phải tự kiểm tra:
+- [ ] Code có vi phạm "Logic > 20 lines in SFC" không?
+- [ ] Đã dùng đúng alias `#/*` cho nội bộ App và `@workspace/*` cho package chưa?
+- [ ] Đã có Zod validation cho dữ liệu mới chưa?
+- [ ] Có đang import chéo giữa 2 App không? (CẤM).
