@@ -15,6 +15,8 @@ dist.war
 .env.local
 .env.*.local
 
+.cursorignore
+
 vite.config.mts.*
 vite.config.mjs.*
 vite.config.js.*
@@ -24,4 +26,4 @@ vite.config.ts.*
 .idea
 # .vscode
 .history
-.cursor
+# .cursor

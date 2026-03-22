@@ -1,0 +1,30 @@
+---
+description: Quy định về Alias Import. Áp dụng cho file .ts, .vue, .tsx.
+globs: ["**/*.ts", "**/*.vue", "**/*.tsx"]
+---
+
+# Strict Alias Import Rules
+
+CẤM sử dụng relative path (e.g., `../../`) để gọi code giữa các package.
+
+## 1. Danh sách Alias bắt buộc:
+- **Hệ thống Lõi:**
+  - `@core/*` -> `packages/@core/`
+  - `@manhtri/utils/*` -> `packages/utils/`
+  - `@manhtri/types/*` -> `packages/types/`
+  - `@manhtri/constants/*` -> `packages/constants/`
+  - `@manhtri/icons/*` -> `packages/icons/`
+- **Hệ thống Middleware (Effects):**
+  - `@manhtri/request/*` -> `packages/effects/request/`
+  - `@manhtri/layouts/*` -> `packages/effects/layouts/`
+  - `@manhtri/hooks/*` -> `packages/effects/hooks/`
+  - `@manhtri/access/*` -> `packages/effects/access/`
+- **Lớp Nghiệp vụ:**
+  - `@manhtri/features/*` -> `packages/features/`
+  - `@manhtri/stores/*` -> `packages/stores/`
+  - `@manhtri/locales/*` -> `packages/locales/`
+- **Local App:**
+  - `#/*` -> Thư mục `src` của app hiện tại (ví dụ: `apps/manager/src`).
+
+## 2. Kiểm tra lỗi:
+- Phát hiện và sửa ngay nếu thấy import từ `dist/` hoặc đường dẫn có nhiều dấu chấm `../../`.

@@ -1,0 +1,19 @@
+---
+alwaysApply: true
+description: Áp dụng khi tạo mới hoặc chỉnh sửa file trong cấu trúc Monorepo (apps/*, packages/*)
+globs: ["apps/**/*", "packages/**/*"]
+---
+
+# EngiHire Monorepo Structure Rules
+
+Dự án sử dụng pnpm workspaces. Tuân thủ nghiêm ngặt các quy tắc phân tầng sau:
+
+- **apps/manager_v1, apps/company, apps/agency**: Các ứng dụng phía người dùng. Không được import trực tiếp lẫn nhau.
+- **packages/shared**: Chứa các utility functions, constants, và types dùng chung.
+- **packages/ui**: Chứa các UI components dùng chung (dựa trên Element Plus & Tailwind).
+- **packages/core**: Chứa `BaseApiService`, Interceptors, và logic nghiệp vụ lõi.
+
+## Quy tắc Import:
+- Mọi logic API dùng chung phải nằm trong `packages/core`.
+- Khi cần dùng chung một Component giữa 2 App, hãy chuyển nó vào `packages/ui`.
+- Ưu tiên sử dụng Workspace Aliases (ví dụ: `@engi/shared`, `@engi/ui`).
