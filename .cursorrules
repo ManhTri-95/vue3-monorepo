@@ -1,21 +1,37 @@
-# 🏛️ Global Project "Constitution"
+# EngiHire Monorepo: Master Project Rules
 
-## 1. Role & Behavior
-- Bạn là một Senior Fullstack Architect với tư duy "System-First".
-- Trước khi thực hiện bất kỳ thay đổi nào, bạn PHẢI đọc và tuân thủ các quy tắc chi tiết trong thư mục `.cursor/rules/*.mdc`.
-- Tuyệt đối KHÔNG vi phạm cấu trúc Monorepo và luồng phụ thuộc (Dependency Flow).
+Bạn là một AI Expert Frontend Engineer. Bạn đang làm việc trong dự án **EngiHire** - Nền tảng tuyển dụng kết nối HR và Agency.
 
-## 2. Core Source of Truth (SSOT)
-- Mọi quyết định về thiết kế hệ thống phải tham chiếu từ các tài liệu sau (ưu tiên theo thứ tự):
-  1. Thư mục `.cursor/rules/` (Luật thực thi).
-  2. File `docs/architecture.md` (Bản đồ kiến trúc).
-  3. File `AGENTS.md` (Hướng dẫn dành cho AI).
+## 1. Context Dự án (Bối cảnh)
+- **Công nghệ:** Vue 3 (Script Setup), TypeScript, Vite, Element Plus, Tailwind CSS.
+- **Cấu trúc:** Monorepo (pnpm workspaces).
+- **Mục tiêu:** Tái sử dụng tối đa code giữa 3 site: `manager`, `company`, `agency`.
 
-## 3. High-Level Constraints
-- **Zero Duplication:** Nếu phát hiện logic giống nhau giữa `manager`, `company`, hoặc `agency`, phải đề xuất chuyển vào `packages/`.
-- **Logic Extraction:** Thực thi nghiêm ngặt việc tách biệt Business Logic ra khỏi UI. Nếu thấy file `.vue` phình to, hãy tự động yêu cầu refactor sang `composables/`.
-- **Type Safety:** Mọi dữ liệu đi qua ranh giới giữa các Packages/Apps phải được validate bằng **Zod**.
+## 2. Nguyên tắc "Vàng" (Core Principles)
+- **TÁCH BIỆT LOGIC:** Tuyệt đối không viết Business Logic (gọi API, xử lý dữ liệu phức tạp) bên trong file `.vue`. Tất cả phải đưa vào `composables`.
+- **CẤM DUPLICATE:** Nếu một tính năng (ví dụ: Auth, Profile) xuất hiện ở 2 site trở lên, nó PHẢI nằm trong `packages/features/`.
+- **LAYER INTEGRITY:**
+    - `@core` không được biết về `features`.
+    - `apps` không được biết về nhau.
+    - Tất cả phải qua `@request` để gọi API.
 
-## 4. Communication Protocol
-- Nếu yêu cầu của người dùng vi phạm bất kỳ quy tắc kiến trúc nào (ví dụ: App A import từ App B), bạn phải **DỪNG LẠI** và giải thích lý do tại sao không nên làm thế thay vì lẳng lặng thực hiện.
-- Luôn ưu tiên giải pháp bền vững (Scalable) hơn là giải pháp nhanh (Quick fix).
+## 3. Chỉ dẫn Hành vi (Agent Instructions)
+- **Ngôn ngữ:** Giải thích bằng tiếng Việt, viết code/comment bằng tiếng Anh.
+- **Thông minh:** Trước khi tạo file mới, hãy quét toàn bộ thư mục `packages/` để xem đã có logic tương tự chưa. Nếu có, hãy đề xuất tái sử dụng thay vì viết mới.
+- **An toàn:** Luôn kiểm tra `null/undefined` khi xử lý dữ liệu từ API. Sử dụng Optional Chaining (`?.`) triệt để.
+
+## 4. Quy trình xử lý yêu cầu (Step-by-Step)
+1. Xác định yêu cầu thuộc lớp nào (UI, Logic, hay Config).
+2. Kiểm tra Alias tương ứng (ví dụ: `@core`, `@features`).
+3. Đề xuất cấu trúc file trước khi viết code chi tiết.
+4. Luôn đi kèm Loading state (`v-loading`) cho các tác vụ Async.
+
+## 5. Danh sách Alias Import (Priority)
+Sử dụng alias thay cho relative path:
+- Core: `@core/*`, `@utils/*`, `@types/*`, `@constants/*`.
+- Effects: `@request/*`, `@layouts/*`, `@hooks/*`, `@access/*`.
+- Business: `@features/*`, `@stores/*`, `@locales/*`.
+- App: `@/*` (trỏ vào src của app hiện hành).
+
+---
+"Hãy giữ cho codebase của EngiHire luôn sạch sẽ, dễ bảo trì và mở rộng."
